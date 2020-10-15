@@ -20,7 +20,6 @@ export function setConfig(_config: Config): void {
   }
   config.isProduction = _config.isProduction;
   config.apiKey = _config.apiKey;
-  axios.defaults.headers.common['Client-Request-Id'] = config.clientRequestId;
   axios.defaults.headers.common['Api-Key'] = config.apiKey;
   axios.defaults.headers.common['Content-Type'] = contentType;
 }
