@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import Config from './types/Config';
 
@@ -8,7 +7,6 @@ const contentType: String = 'application/json';
 
 export const config: Config = {
   isProduction: false,
-  clientRequestId: uuidv4(),
   apiKey: undefined,
 };
 
@@ -21,7 +19,6 @@ export function setConfig(_config: Config): void {
     throw new Error('No Api Key Found');
   }
   config.isProduction = _config.isProduction;
-  config.clientRequestId = _config.clientRequestId ?? config.clientRequestId;
   config.apiKey = _config.apiKey;
   axios.defaults.headers.common['Client-Request-Id'] = config.clientRequestId;
   axios.defaults.headers.common['Api-Key'] = config.apiKey;

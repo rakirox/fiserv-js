@@ -2,13 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import { config, production, sandbox, validateConfig } from './environment';
 import PrimaryTransaction from './types/PrimaryTransaction';
 import AuthenticationVerificationRequest from './types/AuthenticationVerificationRequest';
-
-function elaborateHeader() {
-  const Timestamp = new Date().getTime();
-  return {
-    Timestamp,
-  };
-}
+import elaborateHeader from './utils/elaborateHeader';
 
 /*
   More Info at: https://docs.firstdata.com/org/FDMexico/docs/api#create-primary-transaction
