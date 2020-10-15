@@ -25,7 +25,5 @@ export function setConfig(_config: Config): void {
   config.apiKey = _config.apiKey;
   axios.defaults.headers.common['Client-Request-Id'] = config.clientRequestId;
   axios.defaults.headers.common['Api-Key'] = config.apiKey;
-  axios.defaults.headers.post['Content-Type'] = contentType;
-  axios.defaults.headers.patch['Content-Type'] = contentType;
-  axios.defaults.headers.update['Content-Type'] = contentType;
+  axios.defaults.headers.common['Content-Type'] = contentType;
 }
