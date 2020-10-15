@@ -1,10 +1,10 @@
 import Amount from './Amount';
 import PaymentMethod from './PaymentMethod';
-import RequestType from './RequestType';
+import TransactionRequestType from './TransactionRequestType';
 import TransactionOrigin from './TransactionOrigin';
 
 export default interface PrimaryTransaction {
-  requestType: RequestType;
+  requestType: TransactionRequestType;
   transactionAmount: Amount;
   paymentMethod: PaymentMethod;
   storeId?: string;

@@ -1,4 +1,4 @@
-type RequestType =
+type TransactionRequestType =
   | 'AliPaySaleTransaction'
   | 'ChinaPnRSaleTransaction'
   | 'PaymentCardCreditTransaction'
@@ -20,4 +20,4 @@ type RequestType =
   | 'PaymentDeviceCreditTransaction'
   | 'PaymentDeviceDisbursementTransaction';
 
-export default RequestType;
+export default TransactionRequestType;
