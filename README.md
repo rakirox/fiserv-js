@@ -1,6 +1,65 @@
-# Fisert Promise Based Requests
+# Fiserv Promise Based Requests
 
-This projects is an open source for fiserv payments.
+This is an Open Source Project, feel free to use and pull request.
+
+_**Still work in progress**_
+
+## Usage
+
+```
+yarn add fiserv-js
+```
+
+### Payments
+
+#### `createPayment`
+
+```js
+import { setConfig, payments } from 'fiserv-js';
+
+setConfig({
+  isProduction: false,
+  apiKey: 'YOUR-API-KEY',
+  secret: 'YOUR-SECRET',
+});
+
+const createPayment = async () => {
+  try {
+    const { data } = await payments.create({
+      requestType: "PaymentCardPreAuthTransaction", // Look for TransactionRequestType
+      transactionAmount: {
+        total: '1000',
+        currency: "MXN",
+      },
+      paymentMethod: {
+        number: 'xxxxxxxxxxx';
+        securityCode: 'xxx';
+        expiryDate: {
+          month: '12'
+          year: '22'
+        };,
+      },
+    });
+  } catch (error) {
+    console.log('do smt with me', error)
+  }
+}
+
+```
+
+#### `secondaryTransaction`
+
+#### `transactionInquiry`
+
+#### `finalizeSecureTransaction`
+
+### Tokens
+
+#### `create`
+
+#### `del`
+
+# Colaborate & Improve
 
 ## Commands
 
@@ -17,6 +76,7 @@ This builds to `/dist` and runs the project in watch mode so any edits you save 
 To do a one-off build, use `npm run build` or `yarn build`.
 
 To run tests, use `npm test` or `yarn test`.
+IMPORTANT NOTE: Check out the tests, you need to use your own SECRET & API_KEY
 
 ## Configuration
 
@@ -57,38 +117,6 @@ A simple action is included that runs these steps on all pushes:
 
 - Installs deps w/ cache
 - Lints, tests, and builds
-
-## Optimizations
-
-Please see the main `tsdx` [optimizations docs](https://github.com/palmerhq/tsdx#optimizations). In particular, know that you can take advantage of development-only optimizations:
-
-```js
-// ./types/index.d.ts
-declare var __DEV__: boolean;
-
-// inside your code...
-if (__DEV__) {
-  console.log('foo');
-}
-```
-
-You can also choose to install and use [invariant](https://github.com/palmerhq/tsdx#invariant) and [warning](https://github.com/palmerhq/tsdx#warning) functions.
-
-## Module Formats
-
-CJS, ESModules, and UMD module formats are supported.
-
-The appropriate paths are configured in `package.json` and `dist/index.js` accordingly. Please report if any issues are found.
-
-## Named Exports
-
-Per Palmer Group guidelines, [always use named exports.](https://github.com/palmerhq/typescript#exports) Code split inside your React app instead of your React library.
-
-## Including Styles
-
-There are many ways to ship styles, including with CSS-in-JS. TSDX has no opinion on this, configure how you like.
-
-For vanilla CSS, you can include it at the root directory and add it to the `files` section in your `package.json`, so that it can be imported separately by your users and run through their bundler's loader.
 
 ## Publishing to NPM
 
