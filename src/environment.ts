@@ -1,17 +1,19 @@
 import axios from 'axios';
 import Config from './types/Config';
 
-export const sandbox: String = 'https://prod.api.firstdata.com/gateway/v2/';
-export const production: String = 'https://cert.api.firstdata.com/gateway/v2/';
-const contentType: String = 'application/json';
+export const production: String = 'https://prod.api.firstdata.com/gateway/v2';
+export const sandbox: String = 'https://cert.api.firstdata.com/gateway/v2';
+export const contentType: String = 'application/json';
 
 export const config: Config = {
   isProduction: false,
   apiKey: undefined,
+  secret: undefined,
 };
 
 export function validateConfig() {
   if (!config.apiKey) throw new Error('No Api Key Configured');
+  if (!config.secret) throw new Error('No Secret Configured');
 }
 
 export function setConfig(_config: Config): void {
@@ -20,6 +22,6 @@ export function setConfig(_config: Config): void {
   }
   config.isProduction = _config.isProduction;
   config.apiKey = _config.apiKey;
-  axios.defaults.headers.common['Api-Key'] = config.apiKey;
-  axios.defaults.headers.common['Content-Type'] = contentType;
+  config.secret = _config.secret;
+  axios.defaults.adapter = require('axios/lib/adapters/http');
 }

@@ -11,7 +11,7 @@ export function create(transaction: PrimaryTransaction): Promise<AxiosResponse<a
   validateConfig();
   const endpoint = `${config.isProduction ? production : sandbox}/payments`;
   return axios.post(endpoint, transaction, {
-    headers: elaborateHeader(),
+    headers: elaborateHeader(transaction),
   });
 }
 

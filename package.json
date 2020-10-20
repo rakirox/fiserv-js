@@ -33,6 +33,7 @@
   "author": "Carlos Palmero",
   "module": "dist/fiserv-js.esm.js",
   "devDependencies": {
+    "@types/crypto-js": "^4.0.1",
     "@types/uuid": "^8.3.0",
     "husky": "^4.3.0",
     "tsdx": "^0.14.1",
@@ -41,6 +42,7 @@
   },
   "dependencies": {
     "axios": "^0.20.0",
+    "crypto-js": "^4.0.0",
     "uuid": "^8.3.1"
   }
 }
